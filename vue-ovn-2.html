@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Vue - Övning 2</title>
+    </head>
+    <body>
+        <div id="app">
+           <p> {{ message }}</p>
+           <label>Enter your name</label>
+           <input v-model="yourName">
+           <button v-on:click="showMessage">Show message!</button>
+        </div>
+
+
+        <script	src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script>
+            let app = new Vue({
+                el : '#app',
+                data: {
+                message: 'Hello',
+                yourName: ''
+            },
+            methods: {
+                showMessage: function () {
+                    this.message = `Hello ${this.yourName}!`
+                }
+            }
+            });
+        </script>
+    </body>
+</html>

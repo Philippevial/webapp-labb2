@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Vue - Övning 3</title>
+    </head>
+    <body>
+        <div id="app">
+           <p> {{ message }}</p>
+           <label>Enter your name</label>
+           <input v-model="yourName">
+           <button v-on:click="showMessage">Show message!</button>
+        </div>
+
+
+        <script	src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script>
+            let app = new Vue({
+                el : '#app',
+                data: {
+                message: 'Hello',
+                yourName: ''
+            },
+            methods: {
+                showMessage: function () {
+                    let today = new Date();
+                    let hourNow = today.getHours();
+                    if(hourNow > 18) {
+                        this.message = `Good evening ${this.yourName}!`
+                    } else if(hourNow > 12) {
+                        this.message = `Good day ${this.yourName}!`
+                    } else if (hourNow > 0) {
+                        this.message = `Good morning ${this.yourName}!`
+                    } else {
+                        this.message = `Hello ${this.yourName}`
+                    }
+                }
+            }
+            });
+        </script>
+    </body>
+</html>
