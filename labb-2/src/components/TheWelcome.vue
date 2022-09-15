@@ -5,13 +5,17 @@ import ListPost from "./ListPost.vue";
 
 const posts = ref([]);
 
-const createId = () => {
-  let date = new Date();
-  return date.getTime();
-};
+const weekDays = [
+  "monday",
+  "tuesday",
+  "wednesday",
+  "thursday",
+  "friday",
+  "saturday",
+  "sunday",
+];
 
 const addPost = (newPost) => {
-  newPost.id = createId();
   posts.value.push({ ...newPost });
 };
 
@@ -20,72 +24,35 @@ const filterList = (filterDay) => {
     post.days.find((day) => day === filterDay)
   );
 };
+
+const deletePost = (deletedPost) => {
+  posts.value = posts.value.filter((post) => post.id !== deletedPost.id);
+};
 </script>
 
 <template>
   <FormComp @addPost="addPost" />
-
   <section class="dayContainer">
-    <article>
-      <h2 class="day">Monday</h2>
-      <li v-for="(post, id) in filterList('monday')" :key="id">
-        <ListPost :post="post" />
+    <article v-for="weekDay in weekDays">
+      <h2 class="dayHead">
+        {{ weekDay.charAt(0).toUpperCase() + weekDay.slice(1) }}
+      </h2>
+      <li class="day" v-for="(post, id) in filterList(weekDay)" :key="id">
+        <ListPost :post="post" @deletePost="deletePost" />
       </li>
-    </article>
-    <article>
-      <h2 class="day">Tuesday</h2>
-      <ul>
-        <li v-for="(post, id) in filterList('tuesday')" :key="id">
-          <ListPost :post="post" />
-        </li>
-      </ul>
-    </article>
-    <article>
-      <h2 class="day">Wednesday</h2>
-      <ul>
-        <li v-for="(post, id) in filterList('wednesday')" :key="id">
-          <ListPost :post="post" />
-        </li>
-      </ul>
-    </article>
-    <article>
-      <h2 class="day">Thursday</h2>
-      <ul>
-        <li v-for="(post, id) in filterList('thursday')" :key="id">
-          <ListPost :post="post" />
-        </li>
-      </ul>
-    </article>
-    <article>
-      <h2 class="day">Friday</h2>
-      <ul>
-        <li v-for="(post, id) in filterList('friday')" :key="id">
-          <ListPost :post="post" />
-        </li>
-      </ul>
-    </article>
-    <article>
-      <h2 class="day">Saturday</h2>
-      <ul>
-        <li v-for="(post, id) in filterList('saturday')" :key="id">
-          <ListPost :post="post" />
-        </li>
-      </ul>
-    </article>
-    <article>
-      <h2 class="day">Sunday</h2>
-      <ul>
-        <li v-for="(post, id) in filterList('sunday')" :key="id">
-          <ListPost :post="post" />
-        </li>
-      </ul>
     </article>
   </section>
 </template>
 
 <style scoped>
-.day {
+.dayHead {
   text-decoration: underline;
+}
+
+.day {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
 }
 
 .dayContainer {

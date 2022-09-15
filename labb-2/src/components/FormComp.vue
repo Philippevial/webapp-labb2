@@ -1,21 +1,39 @@
 <script setup>
 import { ref } from "vue";
 
-let userInput = ref();
-// let descInput = ref();
-let checkedDays = ref([]);
+defineEmits(["addPost"]);
+
+const userInput = ref();
+const checkedDays = ref([]);
+const todoOptions = ref("");
+
 const newPost = ref({
   id: "",
   postName: userInput,
   days: checkedDays,
+  choice: todoOptions,
 });
+
+const createId = () => {
+  let date = new Date();
+  return date.getTime();
+};
 </script>
 
 <template>
   <section>
-    <li><input v-model="userInput" placeholder="Post name" /></li>
-    <!-- <li><input v-model="descInput" placeholder="Describe post" /></li> -->
+    <input v-model="userInput" placeholder="Your Todo" />
+  </section>
+  <section>
+    <select v-model="todoOptions">
+      <option disabled value="">Select Todo option</option>
+      <option value="food" id="food">Food</option>
+      <option value="chore" id="chore">Chore</option>
+      <option value="activity" id="activity">Activity</option>
+    </select>
+  </section>
 
+  <section>
     <input type="checkbox" id="monday" value="monday" v-model="checkedDays" />
     <label for="monday">Monday</label>
 
@@ -52,7 +70,18 @@ const newPost = ref({
     <input type="checkbox" id="sunday" value="sunday" v-model="checkedDays" />
     <label for="sunday">Sunday</label>
 
-    <button @click="$emit('addPost', newPost)">Add post</button>
+    <button
+      @click="
+        $emit('addPost', {
+          id: createId(),
+          postName: userInput,
+          days: checkedDays,
+          choice: todoOptions,
+        })
+      "
+    >
+      Add post
+    </button>
   </section>
 </template>
 
