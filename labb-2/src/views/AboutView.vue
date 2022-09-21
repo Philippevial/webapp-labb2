@@ -4,4 +4,8 @@
   </div>
 </template>
 
-<style></style>
+<style>
+.about {
+  min-height: 90vh;
+}
+</style>

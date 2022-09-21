@@ -5,12 +5,10 @@ const props = defineProps({
     required: true,
   },
 });
-
-console.log(props.post.choice);
 </script>
 
 <template>
-  <p
+  <h4
     :class="{
       food: post.choice === 'food',
       chore: post.choice === 'chore',
@@ -18,20 +16,34 @@ console.log(props.post.choice);
     }"
   >
     {{ post.postName }}
-    <button @click="$emit('deletePost', post)">Delete</button>
-  </p>
+    <button class="deleteBtn" @click="$emit('deletePost', post)">
+      <img src="./icons/buttons/trash-solid.svg" alt="" />
+    </button>
+  </h4>
 </template>
 
 <style scoped>
 .food {
-  background-color: blue;
+  border-style: solid;
+  border-color: crimson;
+  color: green;
 }
 
 .chore {
-  background-color: blueviolet;
+  border-style: solid;
+  color: blue;
 }
 
 .activity {
-  background-color: aquamarine;
+  border-style: solid;
+  color: red;
+}
+
+img {
+  width: 10px;
+}
+
+.deleteBtn {
+  padding: 0.25rem;
 }
 </style>
