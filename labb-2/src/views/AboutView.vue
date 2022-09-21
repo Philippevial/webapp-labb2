@@ -1,6 +1,9 @@
 <template>
   <div class="about">
-    <h1>Fan va gott</h1>
+    <h1>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut, adipisci ex
+      magnam nesciunt reiciendis impedit pariatur eos veritatis ullam quae.
+    </h1>
   </div>
 </template>
 
