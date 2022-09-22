@@ -8,7 +8,7 @@ const props = defineProps({
 </script>
 
 <template>
-  <h4
+  <h5
     :class="{
       food: post.choice === 'food',
       chore: post.choice === 'chore',
@@ -19,24 +19,20 @@ const props = defineProps({
     <button class="deleteBtn" @click="$emit('deletePost', post)">
       <img src="./icons/buttons/trash-solid.svg" alt="" />
     </button>
-  </h4>
+  </h5>
 </template>
 
 <style scoped>
 .food {
-  border-style: solid;
-  border-color: crimson;
-  color: green;
+  color: rgb(125, 17, 17);
 }
 
 .chore {
-  border-style: solid;
-  color: blue;
+  color: rgb(17, 156, 47);
 }
 
 .activity {
-  border-style: solid;
-  color: red;
+  color: rgb(73, 14, 191);
 }
 
 img {

@@ -35,7 +35,7 @@ const deletePost = (deletedPost) => {
 
   <section class="container">
     <section class="dayContainer">
-      <article v-for="weekDay in weekDays">
+      <article class="singleDayContainer" v-for="weekDay in weekDays">
         <h4 class="dayHead">
           {{ weekDay.charAt(0).toUpperCase() + weekDay.slice(1) }}
         </h4>
@@ -59,30 +59,87 @@ const deletePost = (deletedPost) => {
   max-width: fit-content;
 }
 
+.singleDayContainer {
+  width: 25%;
+  height: 25vh;
+  overflow: auto;
+}
 .dayContainer {
   display: flex;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   justify-content: space-around;
   width: 80%;
   padding-bottom: 0;
 }
 
 li {
-  margin: 0;
-  padding: 0;
-}
-
-ul {
-  margin: 0;
-  padding: 0;
+  border: 1px solid black;
+  margin-top: -1px; /* Prevent double borders */
+  background-color: #d6d5a8;
+  padding: 5px;
+  text-decoration: none;
+  max-width: 22vh;
+  overflow: auto;
 }
 
 .container {
   display: flex;
   justify-content: space-evenly;
   margin-left: 200px;
-
   position: relative;
-  min-height: 100vh;
+  min-height: 80vh;
+}
+
+/**Phone**/
+@media only screen and (max-width: 600px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 0;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .day {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .singleDayContainer {
+    width: 100%;
+    height: 25vh;
+    overflow: auto;
+  }
+
+  .dayContainer {
+    display: flex;
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 601px) and (max-width: 940px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 0;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .day {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    max-width: fit-content;
+  }
+
+  .singleDayContainer {
+    width: 33%;
+    height: 25vh;
+    overflow: auto;
+  }
 }
 </style>

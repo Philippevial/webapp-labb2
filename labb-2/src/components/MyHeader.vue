@@ -19,7 +19,7 @@ defineProps({
 
 <style scoped>
 .banner {
-  height: 30vh;
+  height: 20vh;
   width: 100%;
   background: #51557e;
   margin-bottom: 2rem;
@@ -42,5 +42,19 @@ defineProps({
 .banner-text {
   text-align: center;
   color: #d6d5a8;
+}
+
+@media only screen and (max-width: 600px) {
+  .banner {
+    width: 100%;
+  }
+
+  .banner-container {
+    width: 100%;
+  }
+
+  .banner-text {
+    width: 100%;
+  }
 }
 </style>

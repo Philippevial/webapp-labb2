@@ -1,9 +1,9 @@
 <template>
   <div class="about">
-    <h1>
+    <h3>
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut, adipisci ex
       magnam nesciunt reiciendis impedit pariatur eos veritatis ullam quae.
-    </h1>
+    </h3>
   </div>
 </template>
 

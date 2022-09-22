@@ -18,4 +18,24 @@ import MyFooter from "./components/MyFooter.vue";
   <MyFooter />
 </template>
 
-<style scoped></style>
+<style scoped>
+@media screen and (min-width: 601px) and (max-width: 940px) {
+  body {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    width: 100%;
+  }
+}
+
+body {
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 100%;
+}
+</style>
