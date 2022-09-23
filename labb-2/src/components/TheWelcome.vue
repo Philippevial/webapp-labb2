@@ -137,7 +137,7 @@ li {
   }
 
   .singleDayContainer {
-    width: 33%;
+    width: 50%;
     height: 25vh;
     overflow: auto;
   }

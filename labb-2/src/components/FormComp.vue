@@ -25,7 +25,6 @@ const createId = () => {
 };
 
 const submitInput = () => {
-  console.log(checkedDays.value);
   const days = [...checkedDays.value];
   if (
     (userInput.value || userInput.value === 0) &&
@@ -45,7 +44,6 @@ const submitInput = () => {
 };
 
 const addDay = (weekDay) => {
-  console.log(checkedDays.value.includes(weekDay));
   checkedDays.value.includes(weekDay)
     ? (checkedDays.value = checkedDays.value.filter((day) => day !== weekDay))
     : checkedDays.value.push(weekDay);
